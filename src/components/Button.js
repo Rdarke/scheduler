@@ -1,16 +1,18 @@
-import React from "react";
-
+import React from "react"; 
 import "components/Button.scss";
+const classnames = require('classnames');
+
+//.......
+// Button component renders different button styles using props.
+//.......
+
 
 export default function Button(props) {
-  let buttonClass = "button";
-
-  if (props.confirm) {
-    buttonClass += " button--confirm";
-  }
-  if (props.danger) {
-    buttonClass += " button--danger";
-  }
+  
+  const buttonClass = classnames("button", {
+   "button--confirm": props.confirm,
+   "button--danger": props.danger
+  });
 
   return (
     <button
