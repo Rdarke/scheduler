@@ -1,6 +1,6 @@
 import React from "react"; 
 import "components/Button.scss";
-const classnames = require('classnames');
+const classNames = require('classnames');
 
 //.......
 // Button component renders different button styles using props.
@@ -9,7 +9,7 @@ const classnames = require('classnames');
 
 export default function Button(props) {
   
-  const buttonClass = classnames("button", {
+  const buttonClass = classNames("button", {
    "button--confirm": props.confirm,
    "button--danger": props.danger
   });
