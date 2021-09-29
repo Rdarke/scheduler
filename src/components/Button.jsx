@@ -1,6 +1,7 @@
 import React from "react"; 
 import "components/Button.scss";
-const classNames = require('classnames');
+import classNames from 'classnames';
+
 
 //.......
 // Button component renders different button styles using props.
