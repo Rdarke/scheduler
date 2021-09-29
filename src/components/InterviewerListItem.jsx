@@ -24,7 +24,3 @@ export default function InterviewerListItem(props) {
    </li>
  );
  };
-
-// className="interviewers__item-image"
-// "interviewers__item-image": avatar
-// "interviewers__item--selected-image": avatar
