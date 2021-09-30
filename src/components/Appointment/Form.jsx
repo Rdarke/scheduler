@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
 export default function Form(props) {
-  const {interviewers, interviewer, setInterviewer, onSave, onCancel} = props;
-  console.log("This is the props", props);
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [name, setName] = useState(props.name || "");
+  console.log("interviewer id", props.interviewer);
+
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -12,24 +14,23 @@ export default function Form(props) {
         <form autoComplete="off">
           <input
             className="appointment__create-input text--semi-bold"
-            name="name"
+            name={name}
             type="text"
             placeholder="Enter Student Name"
-            /*
-          This must be a controlled component
-        */
+            onChange={(event) => setName(event.target.value)}
+            
           />
         </form>
         <InterviewerList
-          interviewers={interviewers}
-          value={interviewer}
-          onChange={setInterviewer}
+          interviewers={props.interviewers}
+          interviewer={interviewer}
+          onChange={() => setInterviewer(interviewer)}
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button onClick={onCancel} danger>Cancel</Button>
-          <Button onClick={onSave} confirm>Save</Button>
+          <Button onClick={props.onCancel} danger>Cancel</Button>
+          <Button onClick={props.onSave} confirm>Save</Button>
         </section>
       </section>
     </main>
