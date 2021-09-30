@@ -15,6 +15,7 @@ import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
+import Status from "components/Appointment/Status";
 
 //..
 // Start of the main Button stories.
@@ -170,10 +171,12 @@ storiesOf("Button", module)
         onEdit={action("onEdit")} 
         onDelete={action("onDelete")} 
         />)
-        .add("Confirm", () => <Confirm 
+      .add("Confirm", () => <Confirm 
         message="Delete the appointment?" 
         onConfirm={action("onConfirm")} 
         onCancel={action("onCancel")} 
         />)
+      .add("Status", () => <Status message="Deleting" />)
+
 
 
