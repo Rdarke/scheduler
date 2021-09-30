@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
+//....
+// Main form component starts <here
+//....
+
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -17,6 +21,7 @@ export default function Form(props) {
     props.onCancel();
   };
 
+  //function saves interviewer & name values on form submit.
   const save = () => {
     props.onSave(name, interviewer)
   }
