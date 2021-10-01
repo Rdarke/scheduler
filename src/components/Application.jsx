@@ -5,25 +5,6 @@ import Appointment from "components/Appointment/index"
 
 import "components/Application.scss";
 
-// testing data.....
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
-
 // testing data for appointments
 const appointments = [
   {
