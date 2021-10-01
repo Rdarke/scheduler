@@ -6,23 +6,23 @@ import Appointment from "components/Appointment/index"
 import "components/Application.scss";
 
 // testing data.....
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
+// const days = [
+//   {
+//     id: 1,
+//     name: "Monday",
+//     spots: 2,
+//   },
+//   {
+//     id: 2,
+//     name: "Tuesday",
+//     spots: 5,
+//   },
+//   {
+//     id: 3,
+//     name: "Wednesday",
+//     spots: 0,
+//   },
+// ];
 
 // testing data for appointments
 const appointments = [
@@ -87,8 +87,16 @@ const appointments = [
 
 export default function Application() {
   const [day, setDay] = useState("Monday")
-
+  const [days, setDays] = useState([])
   const appointmentList = appointments.map((appointment) => (<Appointment key={appointment.id} {...appointment} />))
+
+  // Should only render API data once therfore empty [] declaration 
+  useEffect(() => {
+    axios.get('/api/days')
+      .then((response) => {
+        setDays(response.data);
+      });
+  }, []);
 
   return (
     <main className="layout">
