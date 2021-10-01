@@ -67,9 +67,18 @@ const appointments = [
 
 
 export default function Application() {
-  const [day, setDay] = useState("Monday")
-  const [days, setDays] = useState([])
+  // const [day, setDay] = useState("Monday")
+  // const [days, setDays] = useState([])
   const appointmentList = appointments.map((appointment) => (<Appointment key={appointment.id} {...appointment} />))
+
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+
+    // appointments:{}
+  })
+  const setDay = day => setState({ ...state, day });
+  const setDays = days => setState(prev => ({ ...prev, days }));
 
   // Should only render API data once therfore empty [] declaration 
   useEffect(() => {
@@ -90,8 +99,8 @@ export default function Application() {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            days={days}
-            day={day}
+            days={state.days}
+            day={state.day}
             setDay={setDay}
           />
         </nav>
