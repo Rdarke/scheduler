@@ -1,5 +1,5 @@
 
-// function will return an array of appointments for the given day.
+// function will return an array of {appointments} for the given day.
 export function getAppointmentsForDay(state, day) {
   const results = [];
   // finds the array via day argument.
@@ -27,3 +27,8 @@ export function getInterview(state, interview) {
   results = { ...interview, interviewer};
   return results;
 };
+
+// function will return an array of {interviewer} objects for the given day.
+export function getInterviewersForDay(state, day) {
+  
+}
