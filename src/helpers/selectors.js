@@ -28,7 +28,18 @@ export function getInterview(state, interview) {
   return results;
 };
 
-// function will return an array of {interviewer} objects for the given day.
+// function will return an array of {interviewer} objects for the given day. 
+// Follows similar logic to getAppointmentsForDay.....
 export function getInterviewersForDay(state, day) {
+  const results = [];
+  const locateDay = state.days.filter((dayObj) => dayObj.name === day);
+
+  if (locateDay.length === 0) {
+    return results;
+  }
   
-}
+  for (const val of locateDay[0].interviewers) {
+    results.push(state.interviewers[val]);
+  }
+  return results;
+};
