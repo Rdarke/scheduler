@@ -1,5 +1,6 @@
 import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
+// example testing data matching api. (Days, appointments, Interviewers)
 const state = {
   days: [
     {
