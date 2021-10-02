@@ -6,6 +6,7 @@ import Empty from "components/Appointment/Empty";
 
 export default function Appointment(props) {
   const {interview, time} = props
+  console.log("Show.jsx: interview", interview);
 
   return (
     <article className="appointment">
