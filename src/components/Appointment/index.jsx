@@ -13,7 +13,7 @@ const CREATE = "CREATE";
 
 // Appointments gains props from Application.jsx
 export default function Appointment(props) {
-  const {interview, time} = props
+  const {interview, time, interviewers} = props
 
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
@@ -25,7 +25,7 @@ export default function Appointment(props) {
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === CREATE && (
         <Form 
-        interviewers={[]}
+        interviewers={interviewers}
         onCancel={() => back()} />)}
       {mode === SHOW && (
         <Show 
