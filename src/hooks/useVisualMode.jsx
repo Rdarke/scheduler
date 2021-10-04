@@ -19,13 +19,12 @@ export default function useVisualMode(initial) {
     if (history.length > 1) {
 
       setHistory(history => {
-        const newHistory = [...history].slice(0, history.length - 1);
+        const newHistory = [...history].slice(0, history.length - 1); // refactor using ..prev instead.
         setMode(newHistory[newHistory.length - 1]);
         return newHistory
-
       });
     }
-  }
+  } // keep in mind const mode = ..... history etc.
 
   return {mode, transition, back};
 };

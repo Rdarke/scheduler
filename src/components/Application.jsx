@@ -33,6 +33,11 @@ export default function Application() {
       setState(prev => ({...prev, days, appointments, interviewers }));
     });  
   }, []);
+
+  // compass template fucntion.
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
   
   const dailyAppointments = getAppointmentsForDay( state, state.day )
   const dailyInterviewers = getInterviewersForDay( state, state.day )
@@ -46,6 +51,7 @@ export default function Application() {
         time={appointment.time}
         interview={interview}
         interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
       />
     );
   });

@@ -13,11 +13,20 @@ const CREATE = "CREATE";
 
 // Appointments gains props from Application.jsx
 export default function Appointment(props) {
-  const {interview, time, interviewers} = props
+  const {interview, time, interviewers, bookInterview, id} = props
 
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
+
+  
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    bookInterview(id, interview);
+  };
 
   return (
     <article className="appointment">
@@ -26,6 +35,7 @@ export default function Appointment(props) {
       {mode === CREATE && (
         <Form 
         interviewers={interviewers}
+        onSave={save}
         onCancel={() => back()} />)}
       {mode === SHOW && (
         <Show 
