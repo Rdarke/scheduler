@@ -36,8 +36,22 @@ export default function Application() {
 
   // compass template fucntion.
   function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    setState({
+      ...state,
+      appointments
+    });
+
     console.log(id, interview);
-  }
+  };
   
   const dailyAppointments = getAppointmentsForDay( state, state.day )
   const dailyInterviewers = getInterviewersForDay( state, state.day )
