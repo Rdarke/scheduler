@@ -5,11 +5,13 @@ import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
 import useVisualMode from "hooks/useVisualMode"
 import Form from "components/Appointment/Form";
+import Status from "components/Appointment/Status";
 
 // supporting mode constants for useVisualMode custom hook.
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 // Appointments gains props from Application.jsx
 export default function Appointment(props) {
@@ -25,6 +27,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    transition(SAVING)
     bookInterview(id, interview).then(() => transition(SHOW));
   };
 
@@ -37,6 +40,7 @@ export default function Appointment(props) {
         interviewers={interviewers}
         onSave={save}
         onCancel={() => back()} />)}
+      {mode === SAVING && <Status message={"Saving...."}/>}
       {mode === SHOW && (
         <Show 
         student={interview.student} 
