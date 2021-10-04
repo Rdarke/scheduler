@@ -40,7 +40,7 @@ export default function Application() {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    console.log("Application JSX line 43", appointment); // debugging console.log
+  
     const appointments = {
       ...state.appointments,
       [id]: appointment
