@@ -14,6 +14,7 @@ const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
 const CONFIRM = "CONFIRM";
+const EDIT = "EDIT";
 
 // Appointments gains props from Application.jsx
 export default function Appointment(props) {
@@ -58,14 +59,22 @@ export default function Appointment(props) {
         student={interview.student} 
         interviewer={interview.interviewer}
         onDelete={() => transition(CONFIRM)}
+        onEdit={() => transition(EDIT)}
         />
       )}
+      {mode === EDIT && (
+        <Form
+        interviewers={interviewers}
+        name={interview.student}
+        interviewer={interview.interviewer.id}
+        onSave={save}
+        onCancel={() => back()} />)}
       {mode === CONFIRM && (
         <Confirm
         student={interview.student} 
         interviewer={interview.interviewer}
         onConfirm={remove}
-        onCancel={() => transition(SHOW)}
+        onCancel={() => back()}
         />)}
     </article>
   );
