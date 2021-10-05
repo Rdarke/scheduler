@@ -6,12 +6,14 @@ import Empty from "components/Appointment/Empty";
 import useVisualMode from "hooks/useVisualMode"
 import Form from "components/Appointment/Form";
 import Status from "components/Appointment/Status";
+import Confirm from "components/Appointment/Confirm";
 
 // supporting mode constants for useVisualMode custom hook.
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
+const CONFIRM = "CONFIRM";
 
 // Appointments gains props from Application.jsx
 export default function Appointment(props) {
@@ -36,8 +38,8 @@ export default function Appointment(props) {
       student: student,
       interviewer: interviewer
     };
-    cancelInterview(id, interview);
-    transition(EMPTY);
+    transition(SAVING);
+    cancelInterview(id, interview).then(() => transition(EMPTY));
   };
 
   return (
@@ -57,6 +59,7 @@ export default function Appointment(props) {
         onDelete={remove}
         />
       )}
+      {mode === CONFIRM && (<Confirm/>)}
     </article>
   );
 };
