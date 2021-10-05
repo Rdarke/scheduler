@@ -40,7 +40,6 @@ export default function Application() {
       ...state.appointments[id],
       interview: { ...interview }
     };
-  
     const appointments = {
       ...state.appointments,
       [id]: appointment
@@ -55,7 +54,21 @@ export default function Application() {
 
   //Function removes an appointment from the databse once a user selects Delete via the Appointment (index.jsx)
   function cancelInterview(id, interview) {
-    console.log("cancelInterview Application.jsx line 58", id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.delete(`/api/appointments/${id}`, {interview})
+    .then(() => {setState({
+      ...state,
+      appointments
+    })})
+    
   };
 
   const dailyAppointments = getAppointmentsForDay( state, state.day )

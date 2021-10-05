@@ -37,7 +37,8 @@ export default function Appointment(props) {
       interviewer: interviewer
     };
     cancelInterview(id, interview);
-  }
+    transition(EMPTY);
+  };
 
   return (
     <article className="appointment">
