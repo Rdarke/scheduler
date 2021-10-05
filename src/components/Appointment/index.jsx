@@ -15,7 +15,7 @@ const SAVING = "SAVING";
 
 // Appointments gains props from Application.jsx
 export default function Appointment(props) {
-  const {interview, time, interviewers, bookInterview, id} = props
+  const {interview, time, interviewers, id, bookInterview, cancelInterview} = props
 
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
@@ -31,6 +31,14 @@ export default function Appointment(props) {
     bookInterview(id, interview).then(() => transition(SHOW));
   };
 
+  function remove(student, interviewer) {
+    const interview = {
+      student: student,
+      interviewer: interviewer
+    };
+    cancelInterview(id, interview);
+  }
+
   return (
     <article className="appointment">
       <Header time={time}/>
@@ -45,6 +53,7 @@ export default function Appointment(props) {
         <Show 
         student={interview.student} 
         interviewer={interview.interviewer}
+        onDelete={remove}
         />
       )}
     </article>

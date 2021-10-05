@@ -34,7 +34,7 @@ export default function Application() {
     });  
   }, []);
 
-  // compass template fucntion.
+  // Function returns a put request via api once the save button has been cliked via Form.jsx.
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -52,7 +52,12 @@ export default function Application() {
       appointments
     }));
   };
-  
+
+  //Function removes an appointment from the databse once a user selects Delete via the Appointment (index.jsx)
+  function cancelInterview(id, interview) {
+    console.log("cancelInterview Application.jsx line 58", id, interview);
+  };
+
   const dailyAppointments = getAppointmentsForDay( state, state.day )
   const dailyInterviewers = getInterviewersForDay( state, state.day )
   const appointmentList = dailyAppointments.map((appointment) => {
@@ -66,6 +71,7 @@ export default function Application() {
         interview={interview}
         interviewers={dailyInterviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });

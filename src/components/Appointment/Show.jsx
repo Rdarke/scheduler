@@ -2,7 +2,10 @@ import React from "react";
 
 export default function Show(props) {
 const {student, interviewer, onEdit, onDelete,} = props;
-console.log("show comp props ===", props);
+
+  const deleteForm = () => {
+    onDelete(student, interviewer)
+  };
 
   return (
     <main className="appointment__card appointment__card--show">
@@ -20,7 +23,7 @@ console.log("show comp props ===", props);
             src="images/edit.png"
             alt="Edit"
           />
-          <img onClick={onDelete}
+          <img onClick={deleteForm}
             className="appointment__actions-button"
             src="images/trash.png"
             alt="Delete"
