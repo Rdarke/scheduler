@@ -7,14 +7,18 @@ import useVisualMode from "hooks/useVisualMode"
 import Form from "components/Appointment/Form";
 import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
+import Error from "components/Appointment/Error";
 
-// supporting mode constants for useVisualMode custom hook.
+// supporting mode constRants for useVisualMode custom hook.
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
+const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 // Appointments gains props from Application.jsx
 export default function Appointment(props) {
@@ -31,7 +35,9 @@ export default function Appointment(props) {
       interviewer
     };
     transition(SAVING)
-    bookInterview(id, interview).then(() => transition(SHOW));
+    bookInterview(id, interview)
+    .then(() => transition(SHOW))
+    .catch(error => transition(ERROR_SAVE, true));
   };
 
   // Destructive action, Function removes selected interview from the DB. Once user confirms.
@@ -40,8 +46,10 @@ export default function Appointment(props) {
       student: student,
       interviewer: interviewer
     };
-    transition(SAVING);
-    cancelInterview(id, interview).then(() => transition(EMPTY));
+    transition(DELETING, true);
+    cancelInterview(id, interview)
+    .then(() => transition(EMPTY))
+    .catch(error => transition(ERROR_DELETE, true));
   };
 
   return (
@@ -53,7 +61,8 @@ export default function Appointment(props) {
         interviewers={interviewers}
         onSave={save}
         onCancel={() => back()} />)}
-      {mode === SAVING && <Status message={"Saving...."}/>}
+      {mode === SAVING && <Status message={`Saving....`}/>}
+      {mode === DELETING && <Status message={`Deleting....`}/>}
       {mode === SHOW && (
         <Show 
         student={interview.student} 
@@ -76,6 +85,12 @@ export default function Appointment(props) {
         onConfirm={remove}
         onCancel={() => back()}
         />)}
+        {mode === ERROR_SAVE && (
+          <Error onClose={() => back()}/>
+        )}
+        {mode === ERROR_DELETE && (
+          <Error onClose={() => back()}/>
+        )}
     </article>
   );
 };
