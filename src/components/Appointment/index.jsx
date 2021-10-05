@@ -23,7 +23,7 @@ export default function Appointment(props) {
     interview ? SHOW : EMPTY
   );
 
-  
+  // Function creates a new interview object and transfers data to bookInterview API Call function.
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -33,6 +33,7 @@ export default function Appointment(props) {
     bookInterview(id, interview).then(() => transition(SHOW));
   };
 
+  // Destructive action, Function removes selected interview from the DB. Once user confirms.
   function remove(student, interviewer) {
     const interview = {
       student: student,
@@ -56,10 +57,16 @@ export default function Appointment(props) {
         <Show 
         student={interview.student} 
         interviewer={interview.interviewer}
-        onDelete={remove}
+        onDelete={() => transition(CONFIRM)}
         />
       )}
-      {mode === CONFIRM && (<Confirm/>)}
+      {mode === CONFIRM && (
+        <Confirm
+        student={interview.student} 
+        interviewer={interview.interviewer}
+        onConfirm={remove}
+        onCancel={() => transition(SHOW)}
+        />)}
     </article>
   );
 };
