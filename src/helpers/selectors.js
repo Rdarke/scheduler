@@ -22,7 +22,7 @@ export function getInterview(state, interview) {
   }
   let results = {}
   const id = interview.interviewer;
-  const interviewer = state.interviewers[id]
+  const interviewer = state.interviewers[id];
 
   results = { ...interview, interviewer};
   return results;
