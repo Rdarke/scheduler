@@ -9,6 +9,7 @@ import classNames from "classnames";
 export default function DayListItem(props) {
   const { setDay, name, spots, selected } = props;
 
+  // Updates css styles based on user input.
   const dayClass = classNames("day-list__item", {
     "day-list__item--selected": selected,
     "day-list__item--full": spots === 0,

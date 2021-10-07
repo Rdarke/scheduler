@@ -24,7 +24,7 @@ export default function useVisualMode(initial) {
         return newHistory
       });
     }
-  } // keep in mind const mode = ..... history etc.
+  };
 
   return {mode, transition, back};
 };

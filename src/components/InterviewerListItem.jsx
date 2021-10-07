@@ -7,8 +7,9 @@ import classNames from "classnames";
 //...
 
 export default function InterviewerListItem(props) {
-  const {id, name, avatar, selected, setInterviewer} = props;
+  const { name, avatar, selected, setInterviewer} = props;
 
+  // Updates css styles based on user input.
   const interviewersClass = classNames("interviewers__item", {
     "interviewers__item--selected": selected,
   });
