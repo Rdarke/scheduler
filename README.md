@@ -10,6 +10,16 @@ This project was built for learning purposes. Published as part of our learnings
 
 !["Screenshot of CRUD"](https://github.com/Rdarke/scheduler/blob/master/demo/Scheduler_CRUD_demo.gif?raw=true)
 
+## Technical Specifications
+- React
+- Webpack, Babel
+- Axios, WebSockets
+- Axios
+- Storybook, Webpack Dev Server, Jest, Testing Library
+- The Scheduler client application created using Create React App. Express is the basis for the Scheduler API server application.
+
+Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
+
 ## Setup
 
 Install dependencies with `npm install`.
