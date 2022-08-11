@@ -1,4 +1,4 @@
-# Interview Scheduler
+# Interview Scheduler [![Netlify Status](https://api.netlify.com/api/v1/badges/ce43af4f-163e-468b-81b1-51911edaec64/deploy-status)](https://app.netlify.com/sites/effulgent-mandazi-32a117/deploys)
 
 Interview Scheduler is a React application that allows users to book and cancel interviews. This project combines a concise API with a WebSocket server to build a realtime experience.
 
